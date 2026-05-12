@@ -4,26 +4,25 @@ import { StrictMode } from "react";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// Import your layouts and pages
 import MainLayout from "./layouts/MainLayout.tsx";
 import ProductsList from "./pages/ProductsList.tsx";
 import ProductDetails from "./pages/ProductDetails.tsx";
 import Cart from "./pages/Cart.tsx";
+import Register from "./pages/Register.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-// Define the router with proper configuration
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />, // Parent layout with Navbar + Outlet
-    errorElement: <NotFound />, // Shows when route error occurs
+    element: <MainLayout />,
+    errorElement: <NotFound />,
     children: [
       {
-        index: true, // This renders at the parent path "/"
+        index: true,
         element: <ProductsList />,
       },
       {
-        path: "product/:id", // Dynamic route with parameter
+        path: "product/:id",
         element: <ProductDetails />,
       },
       {
@@ -31,7 +30,11 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "*", // Catch-all route for 404
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "*",
         element: <NotFound />,
       },
     ],
